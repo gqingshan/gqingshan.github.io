@@ -1,0 +1,12 @@
+{
+  "name": "vuepress-starter",
+  "version": "1.0.0",
+  "description": "My vuepress blog",
+  "main": "index.js",
+  "author": "gqingshan",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "license": "MIT"
+}
