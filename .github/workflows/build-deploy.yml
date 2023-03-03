@@ -1,0 +1,21 @@
+name: Build and Deploy
+
+# 在 main 分支发生 push 事件时触发。
+on: [push]
+
+jobs:
+  build-and-deploy:  # 定义作业名称
+    runs-on: ubuntu-latest  # 运行在虚拟机环境 ubuntu-latest
+
+    steps:
+    - name: Checkout   # 步骤 1
+      uses: actions/checkout@master
+
+      - name: vuepress-deploy  # 步骤2
+        uses: jenkey2011/vuepress-deploy@master
+        env:  # 设置环境变量
+          ACCESS_TOKEN: ${{ secrets.VUEPRESS_ACCESS }}  # toKen 私密变量
+          TARGET_REPO: gqingshan/gqingshan.github.io  # 目标仓库。默认当前仓库
+          TARGET_BRANCH: gh-pages  # 目标仓库的分支。默认 gh-pages
+          BUILD_SCRIPT: yarn && yarn docs:build  # 构建脚本
+          BUILD_DIR: docs/.vuepress/dist  # 构建产物的目录
